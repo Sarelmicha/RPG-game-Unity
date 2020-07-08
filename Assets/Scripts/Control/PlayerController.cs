@@ -1,0 +1,94 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using RPG.Movement;
+using RPG.Combat;
+using RPG.Core;
+
+using System;
+
+namespace RPG.Control
+{
+    public class PlayerController : MonoBehaviour
+    {
+        Health health;
+
+        private void Start()
+        {
+            health = GetComponent<Health>();   
+        }
+
+        private void Update()
+        {
+
+            if (health.IsDead())
+            {
+                return;
+            }
+
+            if (InteractWithCombat())
+            {
+                return;
+            }
+            if (InteractWithMovement())
+            {
+                return;
+            }
+
+            
+            print("Nothing to do.");
+        }
+
+        private bool InteractWithCombat()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetRayMouse());
+            
+            foreach (RaycastHit hit in hits)
+            {
+                CombatTarget target =  hit.transform.GetComponent<CombatTarget>() as CombatTarget;
+                
+                if (target == null)
+                {
+                  
+                    return false;
+                }
+               
+                if (GetComponent<Fighter>().CanAttack(target.gameObject))
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                     
+                        GetComponent<Fighter>().Attack(target.gameObject);
+                      
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool InteractWithMovement()
+        {
+            
+            RaycastHit hit;
+            //Check if the ray has hit somthing
+            bool hasHit = Physics.Raycast(GetRayMouse(), out hit);
+            if (hasHit)
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    GetComponent<Mover>().StartMoveAction(hit.point);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private static Ray GetRayMouse()
+        {
+            //Shoot a ray from the main camera 
+            return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+    }
+}
+
