@@ -41,7 +41,7 @@ namespace RPG.Control
 
         private bool InteractWithCombat()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetRayMouse());
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
             
             foreach (RaycastHit hit in hits)
             {
@@ -49,7 +49,7 @@ namespace RPG.Control
                 
                 if (target == null)
                 {
-                  
+                    print("here baby");
                     return false;
                 }
                
@@ -57,7 +57,7 @@ namespace RPG.Control
                 {
                     if (Input.GetMouseButton(0))
                     {
-                     
+                        print("fightttt");
                         GetComponent<Fighter>().Attack(target.gameObject);
                       
                     }
@@ -72,7 +72,7 @@ namespace RPG.Control
             
             RaycastHit hit;
             //Check if the ray has hit somthing
-            bool hasHit = Physics.Raycast(GetRayMouse(), out hit);
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             if (hasHit)
             {
                 if (Input.GetMouseButton(0))
@@ -84,7 +84,7 @@ namespace RPG.Control
             return false;
         }
 
-        private static Ray GetRayMouse()
+        private static Ray GetMouseRay()
         {
             //Shoot a ray from the main camera 
             return Camera.main.ScreenPointToRay(Input.mousePosition);
