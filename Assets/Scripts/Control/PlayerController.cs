@@ -42,14 +42,15 @@ namespace RPG.Control
         private bool InteractWithCombat()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            
+
             foreach (RaycastHit hit in hits)
             {
+               
                 CombatTarget target =  hit.transform.GetComponent<CombatTarget>() as CombatTarget;
                 
                 if (target == null)
                 {
-                    print("here baby");
+                
                     return false;
                 }
                
@@ -57,7 +58,7 @@ namespace RPG.Control
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        print("fightttt");
+                      
                         GetComponent<Fighter>().Attack(target.gameObject);
                       
                     }
@@ -77,7 +78,7 @@ namespace RPG.Control
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point);
+                    GetComponent<Mover>().StartMoveAction(hit.point,1f);
                 }
                 return true;
             }

@@ -15,6 +15,8 @@ namespace RPG.Control
         float waypointDwellTime = 3f;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
+        [Range(0,1)]
+        [SerializeField] float patrolSpeedFraction = 0.2f;
 
 
         // Cached
@@ -90,7 +92,7 @@ namespace RPG.Control
 
             if (timeSinceArrivedWaypoint > waypointDwellTime)
             {
-                mover.StartMoveAction(nextPosition);         
+                mover.StartMoveAction(nextPosition,patrolSpeedFraction);         
             }
         }
 

@@ -40,6 +40,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5
   suspictionTime: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
 --- !u!1001 &2649081214396963276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,20 +114,25 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114312575228002334, guid: 612c8e3660bdad744b0fe3f682a217f9,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8574791
+      value: 68.14
       objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.021682262
+      value: -0.39
       objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.3078003
+      value: 53.04
       objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
@@ -135,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.36779112
+      value: 0.5528023
       objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
@@ -145,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92990845
+      value: 0.83331245
       objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
@@ -160,7 +167,7 @@ PrefabInstance:
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -43.159
+      value: 67.119
       objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
@@ -170,12 +177,12 @@ PrefabInstance:
     - target: {fileID: 6547279893160003675, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6802928514851772735, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: healthPoints
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 612c8e3660bdad744b0fe3f682a217f9, type: 3}
