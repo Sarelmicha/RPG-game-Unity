@@ -45,8 +45,10 @@ namespace RPG.Control
 
             foreach (RaycastHit hit in hits)
             {
-               
+
                 CombatTarget target =  hit.transform.GetComponent<CombatTarget>() as CombatTarget;
+
+               
                 
                 if (target == null)
                 {
@@ -87,8 +89,11 @@ namespace RPG.Control
 
         private static Ray GetMouseRay()
         {
+
             //Shoot a ray from the main camera 
-            return Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray lastRay =  Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(lastRay.origin, lastRay.direction * 100);
+            return lastRay;
         }
     }
 }

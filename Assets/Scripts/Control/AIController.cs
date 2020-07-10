@@ -125,6 +125,7 @@ namespace RPG.Control
 
         private void AttackBehaviour(GameObject player)
         {
+         
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
         }
