@@ -42,7 +42,8 @@ MonoBehaviour:
   suspictionTime: 5
   patrolPath: {fileID: 0}
   waypointTolerance: 1
---- !u!1001 &2649081214396963276
+  patrolSpeedFraction: 0.2
+--- !u!1001 &6470847169083058970
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -119,6 +120,11 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 360827947699409516, guid: 612c8e3660bdad744b0fe3f682a217f9,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1283563424352400925, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -177,12 +183,22 @@ PrefabInstance:
     - target: {fileID: 6547279893160003675, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_Name
-      value: Enemy (1)
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547279893160003675, guid: 612c8e3660bdad744b0fe3f682a217f9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6802928514851772735, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: healthPoints
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865402991177496794, guid: 612c8e3660bdad744b0fe3f682a217f9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 612c8e3660bdad744b0fe3f682a217f9, type: 3}

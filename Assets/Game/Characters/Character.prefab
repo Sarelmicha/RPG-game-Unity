@@ -17,9 +17,12 @@ GameObject:
   - component: {fileID: 5255606331262806865}
   - component: {fileID: 6802928514851772735}
   - component: {fileID: 114312575228002334}
+  - component: {fileID: 114990127830949070}
+  - component: {fileID: 389257793}
+  - component: {fileID: 57089236}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb3d85364a8b9e4991ff37014059e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 6
 --- !u!95 &1560975185
 Animator:
   serializedVersion: 3
@@ -118,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb3d85364a8b9e4991ff37014059e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 6
 --- !u!195 &1560975190
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -125,9 +130,9 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6547279893160003675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.43
   m_Speed: 5.666
   m_Acceleration: 50
   avoidancePriority: 50
@@ -164,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b1259264dd04d429ea40a0e75da58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  healthPoints: 1000
 --- !u!114 &114312575228002334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,4 +184,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRange: 2
   timeBetweenAttacks: 1
-  weaponDamage: 5
+  weaponDamage: 10
+--- !u!114 &114990127830949070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547279893160003675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 
+--- !u!136 &389257793
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547279893160003675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2.0373058
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9936929, z: 0}
+--- !u!114 &57089236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547279893160003675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb3d85364a8b9e4991ff37014059e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 6
