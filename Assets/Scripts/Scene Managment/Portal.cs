@@ -46,8 +46,8 @@ namespace RPG.SceneManagment
 
             // Save Current Level
             SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-            wrapper.Save();
 
+            wrapper.Save();
             print("File saved.");
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
@@ -55,14 +55,15 @@ namespace RPG.SceneManagment
             print("Level Loaded");
 
             wrapper.Load();
-
             print("File Loaded");
 
             // Load current Level
 
             Portal otherPortal = GetOtherPortal();   
             UpdatePlayer(otherPortal);
-          
+
+            wrapper.Save();
+
             yield return new WaitForSeconds(fadeWaitTime);
             yield return fader.FadeIn(fadeInTime);
 
@@ -98,7 +99,6 @@ namespace RPG.SceneManagment
             GameObject player = GameObject.FindWithTag("Player");
             player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);
             player.transform.rotation = otherPortal.spawnPoint.rotation;
-         
 
         }
     }

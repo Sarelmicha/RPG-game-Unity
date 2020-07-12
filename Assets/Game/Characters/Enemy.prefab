@@ -115,6 +115,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1560975190, guid: 612c8e3660bdad744b0fe3f682a217f9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114312575228002334, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: weaponDamage

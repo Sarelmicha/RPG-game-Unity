@@ -6,9 +6,23 @@ using RPG.Saving;
 
 namespace RPG.SceneManagment
 {
+
     public class SavingWrapper : MonoBehaviour
     {
+
         const string DEFAULT_SAVE_FILE = "save";
+        [SerializeField] float fadeInTime = 0.2f;
+
+        IEnumerator Start()
+        {
+
+            print("hey!!~!#!@#");
+            Fader fader = FindObjectOfType<Fader>();
+            fader.FadeOutImmediate();
+            yield return GetComponent<SavingSystem>().LoadLastScene(DEFAULT_SAVE_FILE);
+            yield return fader.FadeIn(fadeInTime);
+       }
+
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
@@ -29,6 +43,5 @@ namespace RPG.SceneManagment
         {
             GetComponent<SavingSystem>().Save(DEFAULT_SAVE_FILE);
         }
-
     }
 }
