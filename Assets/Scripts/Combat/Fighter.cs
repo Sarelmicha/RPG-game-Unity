@@ -105,7 +105,23 @@ namespace RPG.Combat
             {
                 return;
             }
-            target.TakeDamage(currentWeapon.GetDamage());
+
+            if (currentWeapon.HasProjecile())
+            {
+
+                currentWeapon.LaunchProjecilte(rightHandTransform, leftHandTransform, target);
+                print("Projectile Has been launched!");
+            }
+            else
+            {
+                target.TakeDamage(currentWeapon.GetDamage());
+            }
+        }
+
+        // Animation Event
+        private void Shoot()
+        {
+            Hit();
         }
 
         public void EquipWeapon(Weapon weapon)

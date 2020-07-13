@@ -1957,6 +1957,12 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7924886364887463134, guid: 88e03f15b74635c4d9c6457997fb31dd,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: bae708ca556aa3b488b26ce69f48f347,
+        type: 2}
     - target: {fileID: 9060370146917483229, guid: 88e03f15b74635c4d9c6457997fb31dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2445,6 +2451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxSpeed
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812835539166752385, guid: 88e03f15b74635c4d9c6457997fb31dd,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7923030685565921294, guid: 88e03f15b74635c4d9c6457997fb31dd,
         type: 3}
@@ -3456,12 +3467,12 @@ PrefabInstance:
     - target: {fileID: 4421823622593873538, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.74036
+      value: 82.745705
       objectReference: {fileID: 0}
     - target: {fileID: 4421823623737640071, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.74036
+      value: 82.745705
       objectReference: {fileID: 0}
     - target: {fileID: 5244069595052128405, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
