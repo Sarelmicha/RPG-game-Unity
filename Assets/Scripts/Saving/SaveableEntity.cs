@@ -42,16 +42,24 @@ namespace RPG.Saving
         }
 
 #if UNITY_EDITOR
+        //This code run when compiled and not in runtime (Only in editor)
         private void Update() {
+            //Check if we are during run time
             if (Application.IsPlaying(gameObject)) return;
+            //if the path is empty so we are in a prefab, return and do not do the logic
             if (string.IsNullOrEmpty(gameObject.scene.path)) return;
 
+            //Get the serilzition of the object of type SavableEntity
             SerializedObject serializedObject = new SerializedObject(this);
+            //Get the property Unique Id from the serialized Object
             SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
             
+            //If the Uid is empty
             if (string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue))
             {
+                //Set the value of the uid to a unique id
                 property.stringValue = System.Guid.NewGuid().ToString();
+                //Tell unity that a change has been made in this object
                 serializedObject.ApplyModifiedProperties();
             }
 

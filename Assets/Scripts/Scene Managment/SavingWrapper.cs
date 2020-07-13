@@ -15,8 +15,6 @@ namespace RPG.SceneManagment
 
         IEnumerator Start()
         {
-
-            print("hey!!~!#!@#");
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeOutImmediate();
             yield return GetComponent<SavingSystem>().LoadLastScene(DEFAULT_SAVE_FILE);

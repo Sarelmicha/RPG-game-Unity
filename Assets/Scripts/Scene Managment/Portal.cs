@@ -41,11 +41,9 @@ namespace RPG.SceneManagment
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
 
             yield return fader.FadeOut(fadeOutTime);
-
-            // Save Current Level
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
 
             wrapper.Save();
             print("File saved.");
@@ -56,8 +54,6 @@ namespace RPG.SceneManagment
 
             wrapper.Load();
             print("File Loaded");
-
-            // Load current Level
 
             Portal otherPortal = GetOtherPortal();   
             UpdatePlayer(otherPortal);
