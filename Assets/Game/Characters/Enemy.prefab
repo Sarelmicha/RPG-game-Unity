@@ -104,6 +104,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &6470847169083407382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 6470847169083058970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6470847169083464724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18,
@@ -147,6 +153,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ee5eaaab17153cc4e9b626b430841d9c,
         type: 2}
+    - target: {fileID: 114312575228002334, guid: 612c8e3660bdad744b0fe3f682a217f9,
+        type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 6470847169083464724}
+    - target: {fileID: 114312575228002334, guid: 612c8e3660bdad744b0fe3f682a217f9,
+        type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 6470847169083407382}
     - target: {fileID: 360827947699409516, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: maxSpeed

@@ -11,8 +11,8 @@ namespace RPG.Combat
    
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Weapon defaultWeapon = null;
-        [SerializeField] Transform handTransform = null;
-        
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
 
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
@@ -75,15 +75,12 @@ namespace RPG.Combat
 
         public void Attack(GameObject combatTarget)
         {
-          
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
-         
         }
 
         public bool CanAttack(GameObject combatTarget)
         {
-  
             Health targetToTest = combatTarget.GetComponent<Health>();
             return targetToTest != null && !targetToTest.IsDead();
         }
@@ -115,7 +112,7 @@ namespace RPG.Combat
         {
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform,animator);
+            weapon.Spawn(rightHandTransform,leftHandTransform, animator);
         }
     }
 }
