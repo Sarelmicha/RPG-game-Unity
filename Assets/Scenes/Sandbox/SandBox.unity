@@ -1486,7 +1486,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599661777}
-  m_LocalRotation: {x: 0.2403531, y: 0.23936541, z: -0.061288536, w: 0.938711}
+  m_LocalRotation: {x: 0.2403531, y: 0.23936543, z: -0.06128854, w: 0.938711}
   m_LocalPosition: {x: 65.44, y: 4.7, z: 48.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3321,6 +3321,12 @@ Transform:
   m_Father: {fileID: 865898642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2142693249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2735983471975876103, guid: 51311efc2b948fd4f81baee26fbe18df,
+    type: 3}
+  m_PrefabInstance: {fileID: 4421823622773579164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4421823622773579164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3391,18 +3397,35 @@ PrefabInstance:
     - target: {fileID: 4421823622593873538, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.874985
+      value: 82.83253
       objectReference: {fileID: 0}
     - target: {fileID: 4421823623737640071, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.874985
+      value: 82.83253
       objectReference: {fileID: 0}
     - target: {fileID: 5244069595961832834, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5282919370075595466, guid: 51311efc2b948fd4f81baee26fbe18df,
+        type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 7322077157457544819, guid: 6127df2378b007643a2207c2ab04d6b0,
+        type: 3}
+    - target: {fileID: 5282919370075595466, guid: 51311efc2b948fd4f81baee26fbe18df,
+        type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 2142693249}
+    - target: {fileID: 5282919370075595466, guid: 51311efc2b948fd4f81baee26fbe18df,
+        type: 3}
+      propertyPath: weaponOverride
+      value: 
+      objectReference: {fileID: 22100000, guid: b2e81f83d8f7d0546a1329620b2cc1f1,
+        type: 2}
     - target: {fileID: 5669991983498480910, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
       propertyPath: m_LocalRotation.x
