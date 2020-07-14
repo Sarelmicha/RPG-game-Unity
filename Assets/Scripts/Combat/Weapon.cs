@@ -16,6 +16,7 @@ namespace RPG.Combat
         [SerializeField] float weaponDamage = 5f;
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
+        
 
         const string WEAPON_NAME = "Weapon";
 
