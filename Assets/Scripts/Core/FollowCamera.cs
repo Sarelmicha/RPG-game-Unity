@@ -11,8 +11,10 @@ namespace RPG.Core
         // Update is called once per frame
         void LateUpdate()
         {
-            transform.position = target.position;
-           
+            var euler = target.rotation.eulerAngles;   //get target's rotation
+            var rot = Quaternion.Euler(0, euler.y,0 ); //transpose values
+            transform.rotation = rot;                  //set my rotation
+
         }
     }
 }
