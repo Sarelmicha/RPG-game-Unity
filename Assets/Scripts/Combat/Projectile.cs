@@ -7,10 +7,15 @@ namespace RPG.Combat
 {
     public class Projectile : MonoBehaviour
     {
-       [SerializeField] float projectileSpeed = 1f;
-       Health target = null;
-       float damage = 0;
-        
+        [SerializeField] float projectileSpeed = 1f;
+        [SerializeField] bool isHoming = false;
+        Health target = null;
+        float damage = 0;
+
+        private void Start()
+        {
+            transform.LookAt(GetAimLocation());
+        }
 
         // Update is called once per frame
         void Update()
@@ -19,8 +24,12 @@ namespace RPG.Combat
             {
                 return;
             }
-             
-            transform.LookAt(GetAimLocation());
+
+            if (isHoming && !target.IsDead())
+            {
+                transform.LookAt(GetAimLocation());
+            }
+
             transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
         }
 
@@ -44,11 +53,16 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider collider)
         {
-            print("Projectile triggerd!");
+            
             if (collider.GetComponent<Health>() != target)
             {
                 return;
             }
+
+            if (target.IsDead())
+            {
+                return;
+            }              
 
             target.TakeDamage(damage);
             Destroy(gameObject);
