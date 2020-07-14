@@ -121,6 +121,7 @@ namespace RPG.Combat
         // Animation Event
         private void Shoot()
         {
+            print("Shoot has been called");
             Hit();
         }
 
