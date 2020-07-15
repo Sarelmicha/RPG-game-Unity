@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 6045482537778161229, guid: 88e03f15b74635c4d9c6457997fb31dd,
+        type: 3}
+      propertyPath: characterClass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6143569347972758308, guid: 88e03f15b74635c4d9c6457997fb31dd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

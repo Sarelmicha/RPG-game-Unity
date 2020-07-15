@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
+using RPG.Resources;
 
 namespace RPG.Combat
 {
@@ -138,6 +139,11 @@ namespace RPG.Combat
             weapon.Spawn(rightHandTransform,leftHandTransform, animator);
         }
 
+        public Health GetTarget()
+        {
+            return target;
+        }
+
         public object CaptureState()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
@@ -149,7 +155,7 @@ namespace RPG.Combat
         {
             Dictionary<string, object> data = (Dictionary<string, object>)state;
             string weaponName = (string)data["currentWeapon"];
-            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
     }
