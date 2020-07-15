@@ -34,10 +34,18 @@ namespace RPG.Combat
                weapon.name = WEAPON_NAME;
             }
 
+            var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+            else if (overrideController != null)
+            {
+                //If we are here last animation was NOT the deafult animation - so we set it up to deafult;
+                animator.runtimeAnimatorController = animatorOverride.runtimeAnimatorController;
+            }
+            
         }
 
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand)

@@ -7,9 +7,12 @@ namespace RPG.Combat
 {
     public class Projectile : MonoBehaviour
     {
+        [SerializeField] float maxLifeTime = 10f;
         [SerializeField] float projectileSpeed = 1f;
+        [SerializeField] float lifeAfterImpact = 2f;
         [SerializeField] bool isHoming = false;
         [SerializeField] GameObject hitEffect;
+        [SerializeField] GameObject[] destoryOnHit = null;
 
         Health target = null;
         float damage = 0;
@@ -33,12 +36,15 @@ namespace RPG.Combat
             }
 
             transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+
         }
 
         public void SetTarget(Health target, float damage)
         {
             this.target = target;
             this.damage = damage;
+
+            Destroy(gameObject, maxLifeTime);
         }
 
         private Vector3 GetAimLocation()
@@ -68,12 +74,19 @@ namespace RPG.Combat
 
             target.TakeDamage(damage);
 
+            projectileSpeed = 0;
+
             if (hitEffect != null)
             {
                 Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
 
-            Destroy(gameObject);
+            foreach (GameObject toDestory in destoryOnHit)
+            {
+                Destroy(toDestory);
+            }
+
+            Destroy(gameObject,lifeAfterImpact);
         }
     }
 }
