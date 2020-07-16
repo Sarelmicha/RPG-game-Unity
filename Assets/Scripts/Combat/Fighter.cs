@@ -114,13 +114,12 @@ namespace RPG.Combat
 
             if (currentWeapon.HasProjecile())
             {
-
-                currentWeapon.LaunchProjecilte(rightHandTransform, leftHandTransform, target);
+                currentWeapon.LaunchProjecilte(rightHandTransform, leftHandTransform, target,gameObject);
                 print("Projectile Has been launched!");
             }
             else
             {
-                target.TakeDamage(currentWeapon.GetDamage());
+                target.TakeDamage(gameObject,currentWeapon.GetDamage());
             }
         }
 
