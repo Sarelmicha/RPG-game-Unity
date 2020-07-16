@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-namespace RPG.Resources
+namespace RPG.Stats
 {
     public class ExperienceDisplay : MonoBehaviour
     {
@@ -13,7 +13,6 @@ namespace RPG.Resources
         private void Awake()
         {
             experience = GameObject.FindWithTag("Player").GetComponent<Experience>();
-
         }
 
         private void Update()
