@@ -18,7 +18,6 @@ namespace RPG.Stats
                     {
                         if (progressionStat.stat == stat)
                         {
-
                             if (progressionStat.levels.Length >= level)
                             {
                                 return progressionStat.levels[level - 1];

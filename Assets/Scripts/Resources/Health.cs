@@ -16,6 +16,7 @@ namespace RPG.Resources
         private void Start()
         {
             healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            print("healthPoints from start is " + healthPoints);
         }
 
         public bool IsDead()
@@ -71,6 +72,8 @@ namespace RPG.Resources
         public void RestoreState(object state)
         {
             healthPoints = (float)state;
+
+            print("Health from file is " + healthPoints);
 
             if (healthPoints <= 0)
             {
