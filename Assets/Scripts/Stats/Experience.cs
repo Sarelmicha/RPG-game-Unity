@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using System;
 
 namespace RPG.Stats
 {
@@ -10,9 +11,15 @@ namespace RPG.Stats
 
         [SerializeField] float experiencePoints = 0f;
 
+        //public delegate void ExperienceGainedDelegate();
+
+        //Same at the line above - Action means a function with no arguments and a void type
+        public event Action onExperienceGained;
+
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
+            onExperienceGained();
         }
 
         public float GetExperience()

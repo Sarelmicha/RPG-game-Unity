@@ -5,6 +5,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Resources;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -112,14 +113,16 @@ namespace RPG.Combat
                 return;
             }
 
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+
             if (currentWeapon.HasProjecile())
             {
-                currentWeapon.LaunchProjecilte(rightHandTransform, leftHandTransform, target,gameObject);
-                print("Projectile Has been launched!");
+                currentWeapon.LaunchProjecilte(rightHandTransform, leftHandTransform, target, gameObject,damage);
             }
             else
             {
-                target.TakeDamage(gameObject,currentWeapon.GetDamage());
+              
+                target.TakeDamage(gameObject, damage);
             }
         }
 
