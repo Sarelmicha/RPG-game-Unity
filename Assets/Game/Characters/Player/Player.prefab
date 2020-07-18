@@ -244,6 +244,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1101383673270061763, guid: 49fa2d0491702e94a9636c7db6252b62,
         type: 3}
+    - target: {fileID: 4578219982084592269, guid: 612c8e3660bdad744b0fe3f682a217f9,
+        type: 3}
+      propertyPath: shouldUseModifier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6547279893160003675, guid: 612c8e3660bdad744b0fe3f682a217f9,
         type: 3}
       propertyPath: m_Name

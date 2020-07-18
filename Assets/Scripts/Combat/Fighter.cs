@@ -6,28 +6,37 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Resources;
 using RPG.Stats;
+using GameDevTV.Utils;
+using System;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour , IAction, ISaveable, IModifierProvider
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
-   
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Weapon defaultWeapon = null;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
- 
+
 
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
-        Weapon currentWeapon;
+        LazyValue<Weapon> currentWeapon;
+
+        private void Awake()
+        {
+            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+        }
+
+        private Weapon SetupDefaultWeapon()
+        {
+            AttachWeapon(defaultWeapon);
+            return defaultWeapon;
+        }
 
         private void Start()
         {
-            if (currentWeapon == null)
-            {
-                EquipWeapon(defaultWeapon);
-            }      
+            currentWeapon.ForceInit();
         }
 
         private void Update()
@@ -47,7 +56,7 @@ namespace RPG.Combat
 
             if (!GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(target.transform.position,1f);
+                GetComponent<Mover>().MoveTo(target.transform.position, 1f);
             }
             else
             {
@@ -77,7 +86,7 @@ namespace RPG.Combat
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) <= currentWeapon.GetRange();
+            return Vector3.Distance(transform.position, target.transform.position) <= currentWeapon.value.GetRange();
         }
 
         public void Attack(GameObject combatTarget)
@@ -105,13 +114,22 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
 
-        public IEnumerable<float> GetAdditiveModifier(Stat stat)
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
         {
             if (stat == Stat.Damage)
             {
-                yield return currentWeapon.GetDamage();
-            } 
+                yield return currentWeapon.value.GetDamage();
+            }
         }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.value.GetDamage();
+            }
+        }
+
 
         // Animation Event
         private void Hit()
@@ -123,13 +141,13 @@ namespace RPG.Combat
 
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
 
-            if (currentWeapon.HasProjecile())
+            if (currentWeapon.value.HasProjecile())
             {
-                currentWeapon.LaunchProjecilte(rightHandTransform, leftHandTransform, target, gameObject,damage);
+                currentWeapon.value.LaunchProjecilte(rightHandTransform, leftHandTransform, target, gameObject, damage);
             }
             else
             {
-              
+
                 target.TakeDamage(gameObject, damage);
             }
         }
@@ -143,10 +161,15 @@ namespace RPG.Combat
 
         public void EquipWeapon(Weapon weapon)
         {
-            print("weapon is " + weapon.name);
-            currentWeapon = weapon;
+
+            currentWeapon.value = weapon;
+            AttachWeapon(weapon);
+        }
+
+        private void AttachWeapon(Weapon weapon)
+        {
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform,leftHandTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         public Health GetTarget()
@@ -157,7 +180,7 @@ namespace RPG.Combat
         public object CaptureState()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data["currentWeapon"] = currentWeapon.name;
+            data["currentWeapon"] = currentWeapon.value.name;
             return data;
         }
 
@@ -169,6 +192,6 @@ namespace RPG.Combat
             EquipWeapon(weapon);
         }
 
-      
     }
+ 
 }
