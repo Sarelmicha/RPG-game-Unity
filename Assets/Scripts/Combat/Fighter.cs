@@ -9,7 +9,7 @@ using RPG.Stats;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour , IAction, ISaveable
+    public class Fighter : MonoBehaviour , IAction, ISaveable, IModifierProvider
     {
    
         [SerializeField] float timeBetweenAttacks = 1f;
@@ -105,6 +105,14 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
 
+        public IEnumerable<float> GetAdditiveModifier(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetDamage();
+            } 
+        }
+
         // Animation Event
         private void Hit()
         {
@@ -160,5 +168,7 @@ namespace RPG.Combat
             Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
+
+      
     }
 }
