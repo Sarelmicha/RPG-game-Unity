@@ -1,4 +1,4 @@
-﻿using GameDevTV.Utils;
+﻿using RPG.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +21,6 @@ namespace RPG.Stats
         LazyValue<int> currentLevel;
         Experience experience;
 
-
         private void Awake()
         {
             experience = GetComponent<Experience>();
@@ -31,7 +30,7 @@ namespace RPG.Stats
         private void Start()
         {
             currentLevel.ForceInit();
-            
+
         }
 
         private void OnEnable()
@@ -120,7 +119,6 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
-           
             return currentLevel.value;
         }
 

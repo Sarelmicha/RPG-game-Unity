@@ -5,7 +5,7 @@ using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
 using System;
-using GameDevTV.Utils;
+using RPG.Utils;
 
 namespace RPG.Resources
 {
@@ -16,19 +16,19 @@ namespace RPG.Resources
         LazyValue<float> healthPoints;
        bool isDead = false;
 
+
         private void Awake()
         {
             healthPoints = new LazyValue<float>(GetInitialHealth);
         }
-
-        private float GetInitialHealth()
-        {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
-        }
-
         private void Start()
         {
             healthPoints.ForceInit();
+        }
+
+        private float GetInitialHealth()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health); 
         }
 
         private void OnEnable()
@@ -107,14 +107,12 @@ namespace RPG.Resources
 
         public object CaptureState()
         {
-            return healthPoints;
+            return healthPoints.value;
         }
 
         public void RestoreState(object state)
         {
             healthPoints.value = (float)state;
-
-            print("Health from file is " + healthPoints);
 
             if (healthPoints.value <= 0)
             {

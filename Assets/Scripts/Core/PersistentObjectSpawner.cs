@@ -16,12 +16,10 @@ namespace RPG.Core
             {
                 return;
             }
-            else
-            {
-              
-                SpawnPersisentObjects();
-                hasSpawned = true;
-            }
+
+            SpawnPersisentObjects();
+            hasSpawned = true;
+            
         }
 
         private void SpawnPersisentObjects()

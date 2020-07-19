@@ -6,7 +6,7 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Resources;
 using RPG.Stats;
-using GameDevTV.Utils;
+using RPG.Utils;
 using System;
 
 namespace RPG.Combat
@@ -28,15 +28,17 @@ namespace RPG.Combat
             currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
         }
 
-        private Weapon SetupDefaultWeapon()
-        {
-            AttachWeapon(defaultWeapon);
-            return defaultWeapon;
-        }
 
         private void Start()
         {
             currentWeapon.ForceInit();
+            
+        }
+
+        private Weapon SetupDefaultWeapon()
+        {
+            AttachWeapon(defaultWeapon);
+            return defaultWeapon;
         }
 
         private void Update()
@@ -161,7 +163,6 @@ namespace RPG.Combat
 
         public void EquipWeapon(Weapon weapon)
         {
-
             currentWeapon.value = weapon;
             AttachWeapon(weapon);
         }

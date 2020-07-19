@@ -4,7 +4,7 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Resources;
-using GameDevTV.Utils;
+using RPG.Utils;
 using System;
 
 namespace RPG.Control
@@ -38,19 +38,20 @@ namespace RPG.Control
         {
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
-            player = GameObject.FindWithTag("Player");
             mover = GetComponent<Mover>();
+            player = GameObject.FindWithTag("Player");
             guardPositon = new LazyValue<Vector3>(GetGuardPosition);
-        }
-
-        private Vector3 GetGuardPosition()
-        {
-            return transform.position;
         }
 
         private void Start()
         {
             guardPositon.ForceInit();
+        }
+
+
+        private Vector3 GetGuardPosition()
+        {
+            return transform.position;
         }
 
         private void Update()

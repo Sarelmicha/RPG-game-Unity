@@ -45,12 +45,16 @@ namespace RPG.SceneManagment
 
             yield return fader.FadeOut(fadeOutTime);
 
+            //First save is for saving the player data (weapon etc)
             wrapper.Save();
-            print("File saved.");
+            print("File saved for the first time in portal.");
 
-            yield return SceneManager.LoadSceneAsync(sceneToLoad);
+
+            //Load the new level
+           yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
             print("Level Loaded");
+            print("after load index is " + SceneManager.GetActiveScene().buildIndex);
 
             wrapper.Load();
             print("File Loaded");
@@ -58,10 +62,14 @@ namespace RPG.SceneManagment
             Portal otherPortal = GetOtherPortal();   
             UpdatePlayer(otherPortal);
 
+            //Second save is to save the current level with new player position
             wrapper.Save();
+            print("File saved for the second time in portal.");
 
             yield return new WaitForSeconds(fadeWaitTime);
             yield return fader.FadeIn(fadeInTime);
+
+            print("after fade in...");
 
             //Now destory the game object
             Destroy(gameObject);

@@ -1504,7 +1504,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599661777}
-  m_LocalRotation: {x: 0.2403531, y: 0.23936543, z: -0.06128854, w: 0.938711}
+  m_LocalRotation: {x: 0.2403531, y: 0.23936541, z: -0.061288536, w: 0.938711}
   m_LocalPosition: {x: 65.44, y: 4.7, z: 48.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4291,11 +4291,6 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultWeaponName
       value: Fireball
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286710747982462490, guid: 51311efc2b948fd4f81baee26fbe18df,
-        type: 3}
-      propertyPath: uniqueIdentifier
-      value: ae18cca0-4a3c-4419-acc6-de0a7009f5d1
       objectReference: {fileID: 0}
     - target: {fileID: 5669991983498480910, guid: 51311efc2b948fd4f81baee26fbe18df,
         type: 3}
