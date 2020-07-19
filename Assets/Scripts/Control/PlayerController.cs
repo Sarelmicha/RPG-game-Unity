@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
 using RPG.Resources;
+using UnityEngine.EventSystems;
 
 using System;
 
@@ -17,7 +18,8 @@ namespace RPG.Control
         {
             None,
             Movement,
-            Combat
+            Combat,
+            UI
         }
 
         [System.Serializable]
@@ -37,18 +39,27 @@ namespace RPG.Control
 
         private void Update()
         {
+            if (IntercatWithUI())
+            {
+                SetCursor(CursorType.UI);
+                return;
+            }
 
             if (health.IsDead())
             {
+                SetCursor(CursorType.None);
                 return;
             }
 
-            if (InteractWithCombat())
+            if (InteractWithComponent())
             {
+                SetCursor(CursorType.Combat);
                 return;
             }
+     
             if (InteractWithMovement())
             {
+                SetCursor(CursorType.Movement);
                 return;
             }
 
@@ -56,36 +67,31 @@ namespace RPG.Control
             SetCursor(CursorType.None);
         }
 
-        private bool InteractWithCombat()
+        private bool InteractWithComponent()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
 
             foreach (RaycastHit hit in hits)
             {
-
-                CombatTarget target =  hit.transform.GetComponent<CombatTarget>() as CombatTarget;
-
-               
-                
-                if (target == null)
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
                 {
-                
-                    return false;
-                }
-               
-                if (GetComponent<Fighter>().CanAttack(target.gameObject))
-                {
-                    if (Input.GetMouseButton(0))
+                    if (raycastable.HandleRaycast(this))
                     {
-                      
-                        GetComponent<Fighter>().Attack(target.gameObject);
+                        return true;
                     }
-                    SetCursor(CursorType.Combat);
-                    return true;
                 }
             }
             return false;
         }
+
+        private bool IntercatWithUI()
+        {
+            //IsPointerOverGameObject returns true if the cursor on UI Object
+            return EventSystem.current.IsPointerOverGameObject();
+        }
+
+       
 
       
 
@@ -101,7 +107,7 @@ namespace RPG.Control
                 {
                     GetComponent<Mover>().StartMoveAction(hit.point,1f);
                 }
-                SetCursor(CursorType.Movement);
+              
                 return true;
             }
             return false;
