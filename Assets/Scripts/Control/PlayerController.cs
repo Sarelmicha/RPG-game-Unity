@@ -103,9 +103,6 @@ namespace RPG.Control
         private bool InteractWithMovement()
         {
 
-            //RaycastHit hit;
-            //Check if the ray has hit somthing
-            //bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             Vector3 target;
             bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
