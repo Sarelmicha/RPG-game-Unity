@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     public class HealthDisplay : MonoBehaviour
     {
@@ -13,7 +13,6 @@ namespace RPG.Resources
         private void Awake()
         {
             health = GameObject.FindWithTag("Player").GetComponent<Health>();
-
         }
 
         private void Update()

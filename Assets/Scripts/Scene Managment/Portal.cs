@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using RPG.Control;
 
 namespace RPG.SceneManagment
 {
@@ -20,6 +21,8 @@ namespace RPG.SceneManagment
         [SerializeField] float fadeOutTime = 1f;
         [SerializeField] float fadeInTime = 2f;
         [SerializeField] float fadeWaitTime = 0.5f;
+
+
 
         private void OnTriggerEnter(Collider other)
         {
@@ -42,6 +45,11 @@ namespace RPG.SceneManagment
 
             Fader fader = FindObjectOfType<Fader>();
             SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
+            PlayerController playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            playerController.enabled = false;
+
+            //Remove control of the player
+
 
             yield return fader.FadeOut(fadeOutTime);
 
@@ -56,6 +64,11 @@ namespace RPG.SceneManagment
             print("Level Loaded");
             print("after load index is " + SceneManager.GetActiveScene().buildIndex);
 
+            //Remove control of the player
+            PlayerController newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            newPlayerController.enabled = false;
+
+
             wrapper.Load();
             print("File Loaded");
 
@@ -67,9 +80,12 @@ namespace RPG.SceneManagment
             print("File saved for the second time in portal.");
 
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
+            fader.FadeIn(fadeInTime);
 
             print("after fade in...");
+
+            // Restore control
+            newPlayerController.enabled = true;
 
             //Now destory the game object
             Destroy(gameObject);

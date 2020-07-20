@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Resources;
+using RPG.Attributes;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -13,6 +14,8 @@ namespace RPG.Combat
         [SerializeField] bool isHoming = false;
         [SerializeField] GameObject hitEffect;
         [SerializeField] GameObject[] destoryOnHit = null;
+        [SerializeField] UnityEvent onHit;
+
 
         Health target = null;
         GameObject instigator = null;
@@ -75,11 +78,14 @@ namespace RPG.Combat
             if (target.IsDead())
             {
                 return;
-            }              
+            }
 
+        
             target.TakeDamage(instigator, damage);
 
             projectileSpeed = 0;
+
+            onHit.Invoke();
 
             if (hitEffect != null)
             {

@@ -4,10 +4,11 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
-using RPG.Resources;
+using RPG.Attributes;
 using RPG.Stats;
 using RPG.Utils;
 using System;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -17,6 +18,7 @@ namespace RPG.Combat
         [SerializeField] Weapon defaultWeapon = null;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
+     
 
 
         Health target;
@@ -95,6 +97,7 @@ namespace RPG.Combat
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
+            
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -145,6 +148,7 @@ namespace RPG.Combat
 
             if (currentWeapon.value.HasProjecile())
             {
+                
                 currentWeapon.value.LaunchProjecilte(rightHandTransform, leftHandTransform, target, gameObject, damage);
             }
             else
