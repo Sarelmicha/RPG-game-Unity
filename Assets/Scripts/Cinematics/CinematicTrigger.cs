@@ -11,7 +11,7 @@ namespace RPG.Cinematics
 
         //Cached
         //Need to be change to false, it is true only for test mode
-        bool allreadyTriggerd = false;
+        bool allreadyTriggerd = true;
 
         private void OnTriggerEnter(Collider other)
         {

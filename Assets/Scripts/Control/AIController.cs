@@ -12,13 +12,16 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         // Config
+        [Range(0, 1)]
+        [SerializeField] float patrolSpeedFraction = 0.2f;
         [SerializeField] float chaseDistance = 5f;
-        [SerializeField] float suspictionTime = 3f;
-        float waypointDwellTime = 3f;
+        [SerializeField] float suspictionTime = 3f;      
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
-        [Range(0,1)]
-        [SerializeField] float patrolSpeedFraction = 0.2f;
+        [SerializeField] float aggroCooldownTime = 10f;
+       
+        float waypointDwellTime = 3f;
+
 
 
         // Cached
@@ -31,7 +34,10 @@ namespace RPG.Control
         LazyValue<Vector3> guardPositon;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedWaypoint = Mathf.Infinity;
+        float timeSinceAggrevated = Mathf.Infinity;
+
         int currentWaypointIndex = 0;
+       
 
 
         private void Awake()
@@ -62,7 +68,8 @@ namespace RPG.Control
             }
 
             GameObject player = GameObject.FindWithTag("Player");
-            if (InAttackRange() && fighter.CanAttack(player))
+
+            if (IsAggrevated() && fighter.CanAttack(player))
             {
            
                 AttackBehaviour(player);
@@ -79,10 +86,18 @@ namespace RPG.Control
             UpdateTimers();
         }
 
+        public void Aggrevate()
+        {
+            //Set the timer
+            timeSinceAggrevated = 0;
+            
+        }
+
         private void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedWaypoint += Time.deltaTime;
+            timeSinceAggrevated += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
@@ -141,11 +156,10 @@ namespace RPG.Control
             fighter.Attack(player);
         }
 
-        private bool InAttackRange()
+        private bool IsAggrevated()
         {
-       
             return Vector3.Distance(player.transform.position, transform.position)
-                <= chaseDistance;
+                <= chaseDistance || timeSinceAggrevated < aggroCooldownTime ;
         }
 
         // Called by Unity 
