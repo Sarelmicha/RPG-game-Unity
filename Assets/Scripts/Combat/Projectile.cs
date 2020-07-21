@@ -50,8 +50,6 @@ namespace RPG.Combat
             this.damage = damage;
             this.instigator = instigator;
 
-        
-
             Destroy(gameObject, maxLifeTime);
         }
 
